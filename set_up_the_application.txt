@@ -1,0 +1,67 @@
+Now go to ShoppingCartFrontEnd folder in cmd :
+
+1.) npm install at ShoppingCartFrontEnd folder : to install all dependencies.
+2.) npm start at ShoppingCartFrontEnd folder : to start application
+
+http://localhost:4200
+
+set up mongodb database as :
+
+use project_shoppingcart;
+db.createCollection('user');
+db.user.insert({'username':'admin', 'password':'admin', 'name':'amit', 'age':30, 'role': 'admin', 'phone':1111111111});
+db.user.insert({'username':'a', 'password':'a', 'name':'a', 'age':30, 'role': 'a', 'phone':2222222222});
+
+db.createCollections('product');
+db.product.insert({'name':'Moto G Plus', 'descriptions':'this is description for Moto G Plus', 'quantity':'2', 'price':1000});
+db.product.insert({'name':'Watch Titan', 'descriptions':'this is description for Watch Titan', 'quantity':'100', 'price':5000});
+db.product.insert({'name':'Toy Panda', 'descriptions':'this is description for Toy Panda', 'quantity':'200', 'price':400});
+db.product.insert({'name':'Tshirt Men', 'descriptions':'this is description for Tshirt Men', 'quantity':'40', 'price':800});
+
+-----optional---------
+db.createCollections('cart');
+db.cart.insert({'userId':'1', products : [{'productId':'productId', 'quantity':'quantity'}]});
+----------------------
+
+
+BackEnd Api's
+
+getAllUsers
+--------------------
+http://localhost:8080/api/all/users
+
+userRegistration
+---------------------
+http://localhost:8080/api/user/registration
+Content-Type: application/json Method : POST
+{ "username" : "g", "password" : "d", "name" : "d", "age" : 30, "role" : "a", "phone" : 99}
+
+getAllProducts
+----------------------
+http://localhost:8080/api/products
+
+getProductDetail
+---------------------
+http://localhost:8080/api/product/{productId}/detail
+Eg : http://localhost:8080/api/product/59c91a83b518c21074af9974/detail
+
+addProductToCart
+----------------------------
+http://localhost:8080/api/user/{userId}/product/{productId}
+Eg : http://localhost:8080/api/user/59c911e0b518c21074af9973/product/59c91a83b518c21074af9974
+
+getUsersCart
+--------------------
+http://localhost:8080/api/user/59c911e0b518c21074af9973/cart
+Eg : http://localhost:8080/api/user/59c911e0b518c21074af9973/cart
+
+userUpdate
+--------------------
+http://localhost:8080/api/user/update
+
+userDelete (Method DELETE)
+--------------------
+http://localhost:8080/api/user/{username}/delete
+
+getUser
+http://localhost:8080/api/user/{username}
